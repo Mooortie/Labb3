@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32819.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Labb3 AppFörGlosor", "Labb3 AppFörGlosor\Labb3 AppFörGlosor.csproj", "{987E750F-C090-494F-BFF4-87213072E100}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WordListConsolApplication", "WordListCosnsolApplication\WordListConsolApplication.csproj", "{890F8B03-E447-4172-8BAF-BCFFA8B249C3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{987E750F-C090-494F-BFF4-87213072E100}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{987E750F-C090-494F-BFF4-87213072E100}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{987E750F-C090-494F-BFF4-87213072E100}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{987E750F-C090-494F-BFF4-87213072E100}.Release|Any CPU.Build.0 = Release|Any CPU
+		{890F8B03-E447-4172-8BAF-BCFFA8B249C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{890F8B03-E447-4172-8BAF-BCFFA8B249C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{890F8B03-E447-4172-8BAF-BCFFA8B249C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{890F8B03-E447-4172-8BAF-BCFFA8B249C3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F73B6388-ACAB-4E12-ACC2-9BE8DBA01F10}
+	EndGlobalSection
+EndGlobal
