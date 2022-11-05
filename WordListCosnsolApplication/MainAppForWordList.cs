@@ -30,32 +30,42 @@ namespace WordListConsolApplication
         {
             if (args.Length < 3)
             {
-                throw new ArgumentException("-new <list name> <language 1> <language 2> .. <langauge n>");
+                throw new ArgumentException("\n-new <list name> <language 1> <language 2> .. <langauge n>");
             }
+
             string name = args[0];
             string[] languages = args[1..];
+
             if (WordList.GetLists().Contains(name))
             {
                 Console.WriteLine($"This list does already exist do you want to rewrite it? Y/N");
 
-                if (YesOrNoCheck(Console.ReadLine().ToUpper()) == "Y")
+                if (YesOrNoCheck(Console.ReadLine().ToUpper()))
                 {
                     WordList wordlist = new(name, languages);
                     wordlist.Save();
-
-                    Console.WriteLine("Do you want to add words the list you just created? Y/N");
-                    if (YesOrNoCheck(Console.ReadLine().ToUpper()) == "Y")
-                    {
-                        Add(new[] { name });
-                    }
                 }
+            }
+            else
+            {
+                WordList wordlist = new(name, languages);
+                wordlist.Save();
+                Console.WriteLine($"{name} has been added as a new list!");
+
+            }
+
+            Console.WriteLine("Do you want to add words the list you just created? Y/N");
+            if (YesOrNoCheck(Console.ReadLine().ToUpper()))
+            {
+                Add(new[] { name });
             }
         }
         private static void Add(string[] args)
         {
             if (args.Length != 1)
+            {
                 throw new ArgumentException("\n-add <listname>");
-
+            }
 
             string tempUserInput = "temp";
             string name = args[0];
@@ -86,7 +96,7 @@ namespace WordListConsolApplication
         {
             if (args.Length < 3)
             {
-                throw new ArgumentException("-remove <list name> <language> <word 1> <word 2> .. <word n>");
+                throw new ArgumentException("\n-remove <list name> <language> <word 1> <word 2> .. <word n>");
             }
             string name = args[0];
             WordList currentWordList = WordList.LoadList(name);
@@ -95,9 +105,10 @@ namespace WordListConsolApplication
             string[] wordsToRemove = args[2..];
 
             int languageIndex = Array.IndexOf(currentWordList.Languages, language);
+
             if (languageIndex < 0)
             {
-                throw new KeyNotFoundException($"Language {language} was not found " +
+                throw new KeyNotFoundException($"\nLanguage {language} was not found " +
                     "-remove <list name> <language> <word 1> <word 2> .. <word n>");
             }
 
@@ -112,7 +123,7 @@ namespace WordListConsolApplication
         {
             if (args.Length != 1 && args.Length != 2)
             {
-                throw new KeyNotFoundException($"- words < list name > < sortByLanguage > ");
+                throw new KeyNotFoundException($"\n- words < list name > < sortByLanguage > ");
             }
             string name = args[0];
             WordList currentWordList = WordList.LoadList(name);
@@ -125,7 +136,7 @@ namespace WordListConsolApplication
 
                 if (sorting < 0)
                 {
-                    throw new KeyNotFoundException($"Language {language} was not found " +
+                    throw new KeyNotFoundException($"\nLanguage {language} was not found " +
                     "- words < list name > < sortByLanguage >");
                 }
             }
@@ -134,9 +145,9 @@ namespace WordListConsolApplication
         }
         static void Count(string[] args)
         {
-            if (args.Length < 0)
+            if (args.Length <= 0)
             {
-                throw new KeyNotFoundException($"-count <list name>");
+                throw new KeyNotFoundException($"\n-count <list name>");
             }
             string name = args[0];
             WordList currentWordList = WordList.LoadList(name);
@@ -145,9 +156,9 @@ namespace WordListConsolApplication
         }
         static void Practice(string[] args)
         {
-            if (args.Length < 0)
+            if (args.Length <= 0)
             {
-                throw new KeyNotFoundException($"-practice <list name>");
+                throw new KeyNotFoundException($"\n-practice <list name>");
             }
             string name = args[0];
             WordList currentWordList = WordList.LoadList(name);
@@ -252,7 +263,7 @@ namespace WordListConsolApplication
                 "-practice <list name>";
             Console.WriteLine(helpCommands);
         }
-        private static string YesOrNoCheck(string answer)
+        private static bool YesOrNoCheck(string answer)
         {
             do
             {
@@ -260,11 +271,11 @@ namespace WordListConsolApplication
                 {
                     if ("Y" == answer)
                     {
-                        return answer;
+                        return true;
                     }
                     if (answer == "N")
                     {
-                        return answer;
+                        return false;
                     }
                 }
                 else
