@@ -4,7 +4,7 @@ namespace WordListConsolApplication
 {
     internal class MainAppForWordList
     {
-        private static string fullPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Labb3 AppFörGlosor";
+        private static readonly string fullPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Labb3 AppFörGlosor";
         static void Main(string[] args)
         {
             CheckforDirectory();
@@ -36,7 +36,7 @@ namespace WordListConsolApplication
             string name = args[0];
             string[] languages = args[1..];
 
-            if (WordList.GetLists().Contains(name))
+            if (WordList.Exists(name))
             {
                 Console.WriteLine($"This list does already exist do you want to rewrite it? Y/N");
 
@@ -267,16 +267,13 @@ namespace WordListConsolApplication
         {
             do
             {
-                if (answer == "Y" || answer == "N")
+                if (answer == "Y")
                 {
-                    if ("Y" == answer)
-                    {
-                        return true;
-                    }
-                    if (answer == "N")
-                    {
-                        return false;
-                    }
+                    return true;
+                }
+                if (answer == "N")
+                {
+                    return false;
                 }
                 else
                 {

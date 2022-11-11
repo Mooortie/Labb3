@@ -29,9 +29,11 @@ namespace Labb3_AppFörGlosor
             fileNames.AddRange(files.Select(f => f.Name.Replace(".dat", "")));
             
             return fileNames.ToArray();
-
         }
-
+        public static bool Exists(string listName)
+        {
+            return GetLists().Contains(listName);
+        } 
         public static WordList LoadList(string name)
         {
             string filePath = $@"{fullPath}\{name}.dat";
@@ -109,5 +111,9 @@ namespace Labb3_AppFörGlosor
 
             return new Word(randomFromLanguage, randomToLanguage, words[random.Next(0, words.Count)].Translations);
         }
+        public List<Word> GetAllWords()
+        {
+            return words;
+        } 
     }
 }
